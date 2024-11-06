@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:soft_e2/add.dart'; // Import the addNum function
-import 'package:soft_e2/main.dart';
+import 'package:flutter_tests/add.dart'; // Adjusted import path based on new name
+import 'package:flutter_tests/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -23,11 +23,12 @@ void main() {
     expect(find.text('1'), findsOneWidget);
   });
 
-  // Add a separate unit test for addNum
+  // Unit test for add function
   test('add function adds two numbers correctly', () {
     expect(add(5, 2), equals(7));
   });
 
+  // Unit test for multiply function
   test('multiplies two numbers correctly', () {
     expect(multiply(2, 4), equals(8), reason: '2 x 4 should be 8');
   });
