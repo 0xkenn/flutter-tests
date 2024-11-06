@@ -1,26 +1,28 @@
-// integration_test/acceptance_test.dart
+// test/acceptance_test.dart
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_tests/main.dart' as app;
+import 'package:flutter/material.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('Acceptance test for add function', (WidgetTester tester) async {
-    // Step 1: Start the app
+  testWidgets('Acceptance test for add function in UI',
+      (WidgetTester tester) async {
+    // Start the app
     app.main();
     await tester.pumpAndSettle();
 
-    // Step 2: Placeholder for entering values for the add function
-    // Uncomment and adjust these lines once the input fields are implemented
-    // await tester.enterText(find.byKey(Key('input1')), '5');
-    // await tester.enterText(find.byKey(Key('input2')), '2');
-    // await tester.tap(find.byKey(Key('addButton'))); // Adjust the key to match actual button key
-    // await tester.pumpAndSettle();
+    // Step 1: Enter numbers for addition
+    await tester.enterText(find.byKey(const Key('input1')), '5');
+    await tester.enterText(find.byKey(const Key('input2')), '2');
+
+    // Step 2: Tap the Add button
+    await tester.tap(find.byKey(const Key('addButton')));
+    await tester.pumpAndSettle();
 
     // Step 3: Verify the result is displayed correctly
-    // This expectation will work once the add function and display are implemented
-    // expect(find.text('7'), findsOneWidget);
+    expect(find.text('Result: 7'), findsOneWidget);
   });
 }
